@@ -1,3 +1,3 @@
-# Michael Hartl&rsquo;s Ruby on Rails tutorial
+# Ruby on Rails tutorial
 
 Take 2.
