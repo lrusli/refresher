@@ -12,6 +12,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 
     # invalid submissions should return to signup page
     assert_template 'users/new'
+    assert_select '.error-explanation'
+    assert_select '.field_with_errors'
   end
 
   test "valid signup information" do
@@ -25,5 +27,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
 
     assert_template 'users/show'
+    assert_not flash.empty?
   end
 end
