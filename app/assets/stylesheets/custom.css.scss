@@ -91,6 +91,14 @@ input {
   }
 }
 
+.checkbox {
+  margin-left: 1.25em;
+
+  span {
+    font-weight: normal;
+  }
+}
+
 /* debug */
 .debug_dump {
   width: 100%;
