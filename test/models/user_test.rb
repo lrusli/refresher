@@ -6,10 +6,6 @@ class UserTest < ActiveSupport::TestCase
                      password: "bryant", password_confirmation: "bryant")
   end
 
-  test "should be valid" do
-    assert @user.valid? 
-  end
-
   test "name should be present" do
     @user.name = "    "
     assert_not @user.valid?
