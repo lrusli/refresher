@@ -11,7 +11,9 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
 
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  # has_secure_password prevents empty passwords on user signup
+  # allow_nil: true is used for edit page
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   # Class method User.digest
   # Returns the hex digest of a given string.

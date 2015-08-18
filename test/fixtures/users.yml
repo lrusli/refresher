@@ -1,4 +1,27 @@
 kobe:
   name: Kobe Bryant
-  email: example@example.com
+  email: kobe@example.com
   password_digest: <%= User.digest('password') %>
+  admin: true
+
+michael:
+  name: Michael jordan
+  email: michael@example.com
+  password_digest: <%= User.digest('password') %>
+
+lebron:
+  name: Lebron James
+  email: lebron@example.com
+  password_digest: <%= User.digest('password') %>
+
+tim:
+  name: Tim Duncan
+  email: tim@example.com
+  password_digest: <%= User.digest('password') %>
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  name: <%= "Player #{n}" %>
+  email: <%= "example-#{n}@example.com" %>
+  password_digest: <%= User.digest('password') %>
+<% end %>
