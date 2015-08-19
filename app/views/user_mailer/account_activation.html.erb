@@ -1,0 +1,7 @@
+<h1>Activate your Refresher account</h1>
+
+<p>Hi <%= @user.name %>,</p>
+
+<p>Welcome to Refresher. Please activate your account by following this link:</p>
+<%= link_to "Activate my account", edit_account_activation_url(@user.activation_token,
+                                                               email: @user.email) %>
