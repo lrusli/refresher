@@ -4,6 +4,7 @@ class UsersControllerTest < ActionController::TestCase
   def setup
     @user = users(:kobe)
     @other_user = users(:michael)
+    @inactive = users(:inactive)
   end
 
   test "should redirect index when not logged in" do
@@ -55,6 +56,17 @@ class UsersControllerTest < ActionController::TestCase
     assert_no_difference 'User.count' do
       delete :destroy, id: @user
     end
+    assert_redirected_to root_url
+  end
+
+  test "index should not show inactive users" do
+    log_in_as(@user)
+    get :index
+    assert_select "a[href=?]", user_path(@inactive.id), count: 0
+  end
+
+  test "should not be able to see inactive user profile" do
+    get :show, id: @inactive
     assert_redirected_to root_url
   end
 end
