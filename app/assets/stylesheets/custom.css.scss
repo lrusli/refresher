@@ -105,6 +105,37 @@ input {
   margin: 0;
 }
 
+/* user profile */
+.user-info-name {
+  font-size: 2em;
+}
+
+/* microposts */
+.microposts {
+  padding-left: 0;
+  list-style: none;
+}
+
+.micropost {
+  margin-bottom: 1em;
+  padding-top: 1em;
+  border-top: 1px solid $weak;
+}
+
+.micropost-gravatar {
+  float: left;
+  margin-right: 1em;
+}
+
+.micropost-content,
+.micropost-timestamp {
+  display: block;
+}
+
+.micropost-timestamp {
+  color: $gray-light;
+}
+
 /* debug */
 .debug_dump {
   width: 100%;

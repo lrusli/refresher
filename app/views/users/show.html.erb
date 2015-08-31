@@ -2,10 +2,19 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user-info">
-      <h1>
-        <%= gravatar_for @user %>
+      <h1 class="user-info-name">
+        <%= gravatar_for @user, size: 75 %>
         <%= @user.name %>
       </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+  <% if @user.microposts.any? %>
+    <h3><%= @user.microposts.count %> Microposts</h3>
+    <ol class="microposts">
+      <%= render @microposts %>
+    </ol>
+    <%= will_paginate @microposts %>
+  <% end %>
+  </div>
 </div>

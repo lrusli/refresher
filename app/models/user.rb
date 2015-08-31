@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  # Establish dependency, destroy associated microposts when user is deleted
+  has_many :microposts, dependent: :destroy
+  
   attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save :downcase_email
@@ -77,6 +80,12 @@ class User < ActiveRecord::Base
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
   end
+
+  # Defines a proto-feed.
+  def feed
+    # "?" ensures id is being escaped.
+    Micropost.where("user_id = ?", id)
+  end 
 
   private
     # Converst an email to all lower-case.

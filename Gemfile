@@ -4,7 +4,16 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 gem 'bcrypt'
+# Database seeding.
 gem 'faker'
+# Image uploader.
+gem 'carrierwave'
+# Image resizer.
+gem 'mini_magick'
+# Uses cloud storage for image upload in production.
+# Heroku deletes the uploaded files after every deploy.
+gem 'fog'
+# Pagination.
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 # Use sqlite3 as the database for Active Record
