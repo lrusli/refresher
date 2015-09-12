@@ -73,4 +73,35 @@ class UserTest < ActiveSupport::TestCase
       @user.destroy
     end
   end
+
+  test "should follow and unfollow a user" do
+    # Can't use kobe/lebron here because of seed, check fixtures/relationships.
+    lebron = users(:lebron)
+    tim = users(:tim)
+    assert_not lebron.following?(tim)
+    lebron.follow(tim)
+    assert lebron.following?(tim)
+    assert tim.followers.include?(lebron)
+    lebron.unfollow(tim)
+    assert_not lebron.following?(tim)
+  end
+
+  test "feed should have the right posts" do
+    kobe = users(:kobe)
+    michael = users(:michael)
+    tim = users(:tim)
+
+    # Posts from followed user.
+    michael.microposts.each do |post_following|
+      assert kobe.feed.include?(post_following)
+    end
+    # Posts from self.
+    kobe.microposts.each do |post_self|
+      assert kobe.feed.include?(post_self)
+    end
+    # Posts from unfollowed user.
+    tim.microposts.each do |post_unfollowed|
+      assert_not kobe.feed.include?(post_unfollowed)
+    end
+  end
 end

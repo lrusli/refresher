@@ -1,0 +1,15 @@
+one:
+  follower: kobe
+  followed: michael
+
+two:
+  follower: kobe
+  followed: lebron
+
+three:
+  follower: michael
+  followed: kobe
+
+four:
+  follower: tim
+  followed: kobe 
